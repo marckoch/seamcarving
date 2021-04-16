@@ -26,6 +26,12 @@ tasks.withType<KotlinCompile>() {
     kotlinOptions.jvmTarget = "11"
 }
 
+// special treatment because we receive input from StdIn
+val run by tasks.getting(JavaExec::class) {
+    standardInput = System.`in`
+}
+
 application {
-    mainClassName = "MainKt"
+    //mainClassName = "stage1.MainKt"
+    mainClassName = (properties["mainClass"] ?: "stage1.MainKt") as String
 }

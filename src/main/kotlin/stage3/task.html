@@ -1,0 +1,59 @@
+<h2>Description</h2>
+
+<p>Now you are able to manipulate pictures and ready to start.</p>
+
+<p>The first step is to calculate the <strong>energy</strong> for each pixel of the image. Energy is the pixel's importance. The higher the pixel energy, the less likely this pixel is to be removed from the picture while reducing.</p>
+
+<p>There are several different energy functions invented for seam carving. In this project, we will use <strong>dual-gradient energy function</strong>. </p>
+
+<p>The energy of the pixel <span class="math-tex">\((x, y)\)</span> is <span class="math-tex">\(E(x, y) = \sqrt{\Delta_x^2(x, y)+\Delta_y^2(x, y)}\)</span></p>
+
+<p>Where the square of x-gradient <span class="math-tex">\(\Delta_x^2(x, y) = R_x(x, y)^2+G_x(x, y)^2+B_x(x, y)^2\)</span></p>
+
+<p>y-gradient  <span class="math-tex">\(\Delta_y^2(x, y) = R_y(x, y)^2+G_y(x, y)^2+B_y(x, y)^2\)</span></p>
+
+<p>Don't be confused! You will calculate values <span class="math-tex">\(\Delta_x^2(x, y)\)</span> and <span class="math-tex">\(\Delta_y^2(x, y)\)</span> that are already squared, so you don't need to square them again to calculate <span class="math-tex">\(E(x, y)\)</span>.</p>
+
+<p>Where <span class="math-tex">\(R_x(x, y)\)</span>, <span class="math-tex">\(G_x(x, y)\)</span>, <span class="math-tex">\(B_x(x, y)\)</span> are differences of red, green and blue components between pixels <span class="math-tex">\((x+1, y)\)</span> and <span class="math-tex">\((x -1 , y)\)</span>.</p>
+
+<p>Let's consider a grey pixel <span class="math-tex">\((2, 1)\)</span> on the example image:</p>
+
+<p><strong><img alt="" height="140" src="https://lh3.googleusercontent.com/JXNqtPFE6xXm4wNr3TZupmStxIljHgq6VqNVo2yFoxrr04ywdhtNQ6ey6VEqEcZ13kTI5GTAnl76wGQmYfTDoN4jgI3mSjq5_rls_ZBcBhS5PCskG8dFUOhtkqyqem7FkC5oIzth" width="624"></strong></p>
+
+<p>X-differences are:<br>
+<span class="math-tex">\(R_x(2, 1) = 255-150=105,\ \ G_x(2, 1) = 250-150 = 100, \ \ B_x(2, 1) = 155 - 100 = 55\)</span><br>
+So, x-gradient is <span class="math-tex">\(\Delta_x^2(2, 1) = 105^2+100^2+55^2=24050\)</span></p>
+
+<p>Y-differences are:<br>
+<span class="math-tex">\(R_y(2, 1) = 50 - 10 = 40, \ \ G_y(2, 1)=255-250 = 5, \ \ B_y(2, 1) = 255 - 40 = 215\)</span><br>
+Same for y-gradient <span class="math-tex">\(\Delta_y^2 = 40^2 + 5^2+215^2 = 47850\)</span></p>
+
+<p>Finally, <span class="math-tex">\(E(2, 1) = \sqrt{24050 + 47850} = 268.14\)</span></p>
+
+<p>Energy for border pixels is calculated with a 1-pixel shift from the border. For example:<br>
+<span class="math-tex">\(E(0, 2)=\sqrt{\Delta_x^2(1, 2) + \Delta_y^2(0, 2)}\)</span><br>
+<span class="math-tex">\(E(1, 0)=\sqrt{\Delta_x^2(1, 0) + \Delta_y^2(1, 1)}\)</span><br>
+<span class="math-tex">\(E(0, 0)=\sqrt{\Delta_x^2(1, 0) + \Delta_y^2(0, 1)}\)</span></p>
+
+<h2>Objective</h2>
+
+<p>Calculate energies for all pixels of the image. Normalize calculated energies using the following formula:<br>
+<code class="java">intensity = (255.0 * energy / maxEnergyValue).toInt()</code></p>
+
+<p>To display energy as a grey-scale image, set color components of the output image pixels to calculated intensity. For example, <code class="java"><strong>(red = intensity, green = intensity, blue = intensity)</strong></code>.</p>
+
+<p>You should use <code class="java">double</code> precision in this and in the following stages.</p>
+
+<h2>Example</h2>
+
+<p>The greater-than symbol followed by a space (<code class="java">&gt; </code>) represents the user input. Note that it's not part of the input.</p>
+
+<pre><code class="language-no-highlight">&gt; java Main -in sky.png -out sky-energy.png</code></pre>
+
+<p>For the following <code class="java">sky.png</code>:</p>
+
+<p> <strong><img alt="" height="204" src="https://lh4.googleusercontent.com/MFNeQvlUrluiivvNoYuFjnk4eWfyoZE975uFtrK_9amwO57J_rXeqs3Qw9vJhHwelavq8yqKQKEZBSmDGD81mqf6yR8MzBmMH2cFLvwuMIy788b1P-5tX2fDvaioY6wKW2-2mHTz" width="306"></strong></p>
+
+<p><code class="java">sky-energy.png</code> should look like this:</p>
+
+<p><strong><img alt="" height="203" src="https://lh4.googleusercontent.com/9jZsETelDnTVREvYp6qa20Nij-U30dFjh5e-0srGvb8dAiaafFDDe54iUFIyiJERR6-0WSdOMYbSv8SLQrcWeY6LjI-QNr6x5qLVH_Gw7OgedxXxcHA5OkEB5NwdOIP6Ph6pzdLE" width="302"></strong></p>

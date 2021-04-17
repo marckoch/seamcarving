@@ -32,6 +32,5 @@ val run by tasks.getting(JavaExec::class) {
 }
 
 application {
-    //mainClassName = "stage1.MainKt"
     mainClassName = (properties["mainClass"] ?: "stage1.MainKt") as String
 }

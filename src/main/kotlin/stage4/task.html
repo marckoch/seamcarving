@@ -1,0 +1,31 @@
+<h2>Description</h2>
+
+<p>Now you are ready to find the best seam to remove. Vertical seam is a sequence of adjacent pixels crossing the image top to bottom. The seam can have only one pixel in each row of the image. For example, subsequent pixels for pixel <span class="math-tex">\((x,y)\)</span> are <span class="math-tex">\((x -1, y + 1)\)</span>, <span class="math-tex">\((x, y + 1)\)</span> , and <span class="math-tex">\((x + 1, y + 1)\)</span>.</p>
+
+<p>The best seam to remove is the seam with the lowest sum of pixel energies from all possible seams. The problem of finding the best seam is very similar to finding the shortest path in a graph. Think of pixels as vertices. Connect them with imaginary edges. Edge weight should be equal to the energy of the pixel this edge is pointing to.</p>
+
+<p><strong><img alt="" height="258" src="https://lh5.googleusercontent.com/xun8PZT515JgkZI1yxoSq06v0lDHNockzC7jI9XaX3Mgxu7IgMDLrd4iH38ckROmgrcFUPT5f1vwK1LEa5kxfutTUMGfGJqBtQ9kQSN4HRpQp2mKvY5YSoh1R5GcmQ35U47ygldl" width="387"></strong></p>
+
+<p>The easiest way to apply the shortest path finding algorithm to your energy graph is to add imaginary zero rows with the horizontal links on the top and on the bottom. Then you can search for the shortest path between top-left and bottom-right corners.</p>
+
+<p><strong><img alt="" height="313" src="https://lh4.googleusercontent.com/tLyIFZExJe4ULWR8vFvIrFwS9AR712bk6zy9kAKYWVEzToVEFANOedJdQvUh7qUJHdVmc5KnpD-zgxAvITUE9AZw54dkjtadYmMBG78aQoKmsIqtUEUfBQOV9VYAP4w_Mj1ETMWO" width="390"></strong></p>
+
+<p>Also, you can come up with a dynamic programming solution without adding rows.</p>
+
+<h2>Objective</h2>
+
+<p>At this stage, your program should find the seam with the lowest energy and highlight it in red. Red is <code class="java">(255, 0, 0)</code>.</p>
+
+<h2>Example</h2>
+
+<p>The greater-than symbol followed by a space (<code class="java">&gt; </code>) represents the user input. Note that it's not part of the input.</p>
+
+<pre><code class="language-no-highlight">&gt; java Main -in sky.png -out sky-seam.png</code></pre>
+
+<p>For the following <code class="java">sky.png</code>:</p>
+
+<p> <strong><img alt="" height="204" src="https://lh4.googleusercontent.com/MFNeQvlUrluiivvNoYuFjnk4eWfyoZE975uFtrK_9amwO57J_rXeqs3Qw9vJhHwelavq8yqKQKEZBSmDGD81mqf6yR8MzBmMH2cFLvwuMIy788b1P-5tX2fDvaioY6wKW2-2mHTz" width="306"></strong></p>
+
+<p><code class="java">sky-seam.png</code> should look like this:</p>
+
+<p><strong><img alt="" height="205" src="https://lh5.googleusercontent.com/eAzMIQej7PRfZ83dmz1v2PqzBVwca5dlxMJkUIVacxJ7j9KVj6tn1feHQzEn68PAEt3Jpbm3mmhExwOSFQw9-XUxoKA98d0i5o5HReCh55ThzDZusF6pEf1xwQ7nKjN9GoHB8aW4" width="305"></strong></p>

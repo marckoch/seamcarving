@@ -7,8 +7,10 @@ https://hyperskill.org/projects/100
 Further info: https://en.wikipedia.org/wiki/Seam_carving
 
 The solution is build up step by step over several stages. 
-Stage 1 is the first and simple one. The folowing stages 
+Stage 1 is the first and simple one. The following stages 
 build up on the previous stages and get more and more advanced.
+There are six stages in total.
+
 Because each stage is completely independent of the previous one,
 IntelliJ might show some warnings about duplicated code between 
 the stages.
@@ -66,7 +68,7 @@ the resulting image:
 
 ## Stage 4
 
-We input an image and create a new version of it where the seam is shown as a red line from top to bottom.
+We input an image and create a new version of it where the vertical seam is shown as a red line from top to bottom.
 
 just execute this:
 
@@ -79,3 +81,19 @@ the input image:
 the resulting image:
 
 ![blue.png](./src/main/resources/blue-seam.png)
+
+## Stage 5
+
+We input an image and create a new version of it where the horizontal seam is shown as a red line from left to right.
+
+just execute this:
+
+    gradle -PmainClass=stage5.MainKt run --console=plain --args="-in ./src/main/resources/blue.png -out blue-seam-horizontal.png"
+
+the input image:
+
+![blue.png](./src/main/resources/blue.png)
+
+the resulting image:
+
+![blue.png](./src/main/resources/blue-seam-horizontal.png)

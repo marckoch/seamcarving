@@ -17,6 +17,8 @@ the stages.
 
 ## Stage 1
 
+[click here to see description @ JetBrains Academy](https://hyperskill.org/projects/100/stages/550/implement)
+
 We create an image of a red cross.
 
 just execute this:
@@ -36,6 +38,8 @@ Then the test.png should be created in the root folder that looks like this:
 
 ## Stage 2
 
+[click here to see description @ JetBrains Academy](https://hyperskill.org/projects/100/stages/551/implement)
+
 We input an image and create the negative of it.
 
 just execute this:
@@ -51,6 +55,8 @@ the resulting image:
 ![blue.png](./src/main/resources/blue-negative.png)
 
 ## Stage 3
+
+[click here to see description @ JetBrains Academy](https://hyperskill.org/projects/100/stages/552/implement)
 
 We input an image and create the energy map of it.
 
@@ -68,6 +74,8 @@ the resulting image:
 
 ## Stage 4
 
+[click here to see description @ JetBrains Academy](https://hyperskill.org/projects/100/stages/553/implement)
+
 We input an image and create a new version of it where the vertical seam is shown as a red line from top to bottom.
 
 just execute this:
@@ -84,6 +92,8 @@ the resulting image:
 
 ## Stage 5
 
+[click here to see description @ JetBrains Academy](https://hyperskill.org/projects/100/stages/554/implement)
+
 We input an image and create a new version of it where the horizontal seam is shown as a red line from left to right.
 
 just execute this:
@@ -97,3 +107,28 @@ the input image:
 the resulting image:
 
 ![blue.png](./src/main/resources/blue-seam-horizontal.png)
+
+## Stage 6 
+
+[click here to see description @ JetBrains Academy](https://hyperskill.org/projects/100/stages/555/implement)
+
+We input an image and do some content-aware resizing with it by 
+removing vertical and horizontal seams.
+
+just execute this (one line):
+
+ATTENTION: "width" is NOT the new width of the resulting image but 
+rather the number of pixels we remove in the width, same with "height"
+
+    gradle -PmainClass=stage6.MainKt run --console=plain 
+        --args="-in ./src/main/resources/blue.png -out blue-reduced.png
+                -width 125 -height 50"
+
+the input image:
+
+![blue.png](./src/main/resources/blue.png)
+
+the resulting image (125 pixels were cut in the left/right dimension 
+and 50 pixels were cut in the top/bottom dimension):
+
+![blue.png](./src/main/resources/blue-reduced.png)
